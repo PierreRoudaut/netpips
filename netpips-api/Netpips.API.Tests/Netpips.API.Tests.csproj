@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ressources\1337x_search_results.html" />
+    <None Remove="ressources\1337x_torrent_detail_result.html" />
+    <None Remove="ressources\archiveRAR4.rar" />
+    <None Remove="ressources\archiveRAR5.rar" />
+    <None Remove="ressources\bittorrentam_search_results.html" />
+    <None Remove="ressources\bittorrentam_torrent_detail_result.html" />
+    <None Remove="ressources\music.part1.rar" />
+    <None Remove="ressources\music.part2.rar" />
+    <None Remove="ressources\music.part3.rar" />
+    <None Remove="ressources\music.part4.rar" />
+    <None Remove="ressources\music.part5.rar" />
+    <None Remove="ressources\showRSS.html" />
+    <None Remove="ressources\show_rss_polling_feed.xml" />
+    <None Remove="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].corrupted.torrent" />
+    <None Remove="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].part" />
+    <None Remove="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].torrent" />
+    <None Remove="ressources\transmission-remote-full-stats.valid.txt" />
+    <None Remove="ressources\transmission-remote-summary-stats.invalid.txt" />
+    <None Remove="ressources\transmission-remote-summary-stats.valid.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ressources\1337x_search_results.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\1337x_torrent_detail_result.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\archiveRAR4.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\archiveRAR5.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\bittorrentam_search_results.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\bittorrentam_torrent_detail_result.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\music.part1.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\music.part2.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\music.part3.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\music.part4.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\music.part5.rar">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\showRSS.html" />
+    <EmbeddedResource Include="ressources\show_rss_polling_feed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].corrupted.torrent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].part">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\The.Big.Bang.Theory.S11E14.HDTV.x264-SVA[rarbg].torrent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\transmission-remote-full-stats.valid.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\transmission-remote-summary-stats.invalid.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ressources\transmission-remote-summary-stats.valid.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Remove="ressources\magnetdl_search_results.html" />
+    <EmbeddedResource Include="ressources\magnetdl_search_results.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <None Remove="ressources\1718ms-video-file.mp4" />
+    <EmbeddedResource Include="ressources\1718ms-video-file.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.17.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="Moq.AutoMock" Version="3.3.0" />
+
+      <PackageReference Include="NUnit" Version="3.13.2" />
+  <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Netpips.API\Netpips.API.csproj" />
+  </ItemGroup>
+
+</Project>

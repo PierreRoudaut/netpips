@@ -1,0 +1,45 @@
+version: "3.6"
+
+services:
+
+  netpips-api:
+    build:
+      args:
+        VERSION: "1.0.0"
+      context: .
+      dockerfile: ./Netpips.Server/Netpips.API/Dockerfile
+    depends_on:
+      - netpips-sql
+    container_name: netpips-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+      - ASPNETCORE_URLS=http://*:5111
+      - ConnectionStrings__Default=<connection_string>   
+    entrypoint: "/bin/sh"
+    command:
+      - -c
+      - |
+        sleep 30
+        dotnet Netpips.API
+    ports:
+      - "5111:5111"
+    networks:
+      - netpips-network
+
+  netpips-sql:
+    build:
+      context: ./docker-compose/sql-server-acceptance
+      dockerfile: Dockerfile
+    container_name: sql
+    ports:
+      - 1533:1433
+    environment:
+      - ADMIN_USERNAME=SA
+      - SA_PASSWORD=Password!1
+      - ACCEPT_EULA=Y
+    networks:
+      - netpips-network
+
+networks:
+  netpips-network:
+    name: netpips-network
