@@ -75,3 +75,12 @@ fi
 curl "http://localhost:5000/api/torrentDone/$TR_TORRENT_HASH"
 ```
  
+# SQL Server cmd
+
+```shell
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Password1
+docker exec netpips-sql bash -c "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P Password1 -Q 'select name from sys.databases'"
+```
+
+# Next
+Get app to connect to dockerized SQL Server from IDE in debug mode

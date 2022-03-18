@@ -31,25 +31,25 @@ public class AppDbContext : DbContext
          // unique email constraint
          modelBuilder.Entity<User>().HasIndex(e => e.Email).IsUnique();
 
-         // unique userId/showRssId constraint
-         modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
-
-
-        // backing fields
-         modelBuilder.Entity<DownloadItem>().Property(e => e.MovedFiles).HasColumnName("MovedFiles");
-
-        // string to enum conversions
-         modelBuilder
-             .Entity<User>().Property(e => e.Role)
-             .HasConversion(new EnumToStringConverter<Role>())
-             .HasDefaultValue(Role.User);
-         modelBuilder
-             .Entity<DownloadItem>().Property(e => e.State)
-             .HasConversion(new EnumToStringConverter<DownloadState>());
-         modelBuilder
-             .Entity<DownloadItem>().Property(e => e.Type)
-             .HasConversion(new EnumToStringConverter<DownloadType>());
-
+        //  // unique userId/showRssId constraint
+        //  modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
+        //
+        //
+        // // backing fields
+        //  modelBuilder.Entity<DownloadItem>().Property(e => e.MovedFiles).HasColumnName("MovedFiles");
+        //
+        // // string to enum conversions
+        //  modelBuilder
+        //      .Entity<User>().Property(e => e.Role)
+        //      .HasConversion(new EnumToStringConverter<Role>())
+        //      .HasDefaultValue(Role.User);
+        //  modelBuilder
+        //      .Entity<DownloadItem>().Property(e => e.State)
+        //      .HasConversion(new EnumToStringConverter<DownloadState>());
+        //  modelBuilder
+        //      .Entity<DownloadItem>().Property(e => e.Type)
+        //      .HasConversion(new EnumToStringConverter<DownloadType>());
+        //
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
