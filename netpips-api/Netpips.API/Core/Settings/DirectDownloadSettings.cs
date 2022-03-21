@@ -8,7 +8,7 @@ public class FileHosterInfo
     public Uri LoginUrl { get; set; }
     public string Pattern { get; set; }
     public Dictionary<string, string> CredentialsData { get; set; }
-    public bool CanHandle(string url) => new Regex(Pattern).IsMatch(url);
+    public bool CanHandle(string? url) => new Regex(Pattern).IsMatch(url);
 }
 
 public class DirectDownloadSettings

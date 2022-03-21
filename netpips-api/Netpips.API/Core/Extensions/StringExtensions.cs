@@ -13,7 +13,7 @@ public static class StringExtensions
     public static string Quoted(this string str) => '"' + str + '"';
 
 
-    public static string ToSafeFilename(this string filename)
+    public static string? ToSafeFilename(this string filename)
     {
         return filename.Replace("\"", string.Empty);
     }

@@ -89,7 +89,7 @@ public class DownloadItemController : Microsoft.AspNetCore.Mvc.Controller
     [ProducesResponseType(typeof(string), 404)]
     [ProducesResponseType(typeof(string), 400)]
     [ProducesResponseType(typeof(string), 500)]
-    public ObjectResult IsUrlSupported([FromBody] string fileUrl)
+    public ObjectResult IsUrlSupported([FromBody] string? fileUrl)
     {
         var result = _service.ValidateUrl(fileUrl);
         return Ok(result);

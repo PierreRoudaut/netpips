@@ -26,5 +26,5 @@ public interface IDownloadItemService
     void ArchiveDownload(DownloadItem item);
 
     void ComputeDownloadProgress(DownloadItem item);
-    UrlValidationResult ValidateUrl(string fileUrl);
+    UrlValidationResult ValidateUrl(string? fileUrl);
 }

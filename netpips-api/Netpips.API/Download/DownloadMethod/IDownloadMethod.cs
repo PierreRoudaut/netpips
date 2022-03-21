@@ -29,6 +29,6 @@ public interface IDownloadMethod
     void Start(DownloadItem? item);
     bool Archive(DownloadItem item);
 
-    bool CanHandle(string fileUrl);
+    bool CanHandle(string? fileUrl);
     bool CanHandle(DownloadType type);
 }

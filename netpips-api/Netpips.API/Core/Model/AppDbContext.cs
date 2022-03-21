@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Netpips.API.Download.Model;
 using Netpips.API.Identity.Authorization;
 using Netpips.API.Identity.Model;
+using Netpips.API.Media.Model;
 using Netpips.API.Subscriptions.Model;
+using Newtonsoft.Json;
 
 namespace Netpips.API.Core.Model;
 
@@ -28,16 +30,20 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-         // unique email constraint
+         // unique email constraiant
          modelBuilder.Entity<User>().HasIndex(e => e.Email).IsUnique();
 
-         // unique userId/showRssId constraint
-         modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
-
-
-        // backing fields
-         modelBuilder.Entity<DownloadItem>().Property(e => e.MovedFiles).HasColumnName("MovedFiles");
-
+        //  // unique userId/showRssId constraint
+        modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
+        //
+        //
+        // // backing fields
+        modelBuilder
+            .Entity<DownloadItem>()
+            .Property(e => e.MovedFiles)
+            .HasConversion(v => JsonConvert.SerializeObject(v), 
+                v => !string.IsNullOrEmpty(v) ? JsonConvert.DeserializeObject<List<MediaItem>>(v): new List<MediaItem>());
+        //
         // string to enum conversions
          modelBuilder
              .Entity<User>().Property(e => e.Role)
@@ -49,7 +55,7 @@ public class AppDbContext : DbContext
          modelBuilder
              .Entity<DownloadItem>().Property(e => e.Type)
              .HasConversion(new EnumToStringConverter<DownloadType>());
-
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
