@@ -28,17 +28,17 @@ public class TransmissionRemoteDaemonService : ITorrentDaemonService
         return result == 0;
     }
 
-    public bool StopTorrent(string hash)
+    public bool StopTorrent(string? hash)
     {
         return OsHelper.ExecuteCommand("transmission-remote", $"{TrAuth} -t {hash} -S", out _, out _) == 0;
     }
 
-    public bool RemoveTorrent(string hash)
+    public bool RemoveTorrent(string? hash)
     {
         return OsHelper.ExecuteCommand("transmission-remote", $"{TrAuth} -t {hash} -r", out _, out _) == 0;
     }
 
-    public long GetDownloadedSize(string hash)
+    public long GetDownloadedSize(string? hash)
     {
         OsHelper.ExecuteCommand("transmission-remote", $"{TrAuth} -t {hash} -i", out var output, out var _);
         if (string.IsNullOrEmpty(output))

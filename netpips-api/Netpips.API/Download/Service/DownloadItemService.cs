@@ -26,7 +26,7 @@ public class DownloadItemService : IDownloadItemService
         _logger = logger;
     }
 
-    public UrlValidationResult ValidateUrl(string fileUrl)
+    public UrlValidationResult ValidateUrl(string? fileUrl)
     {
         var downloadMethod = ResolveDownloadMethod(fileUrl);
         var result = new UrlValidationResult();
@@ -45,7 +45,7 @@ public class DownloadItemService : IDownloadItemService
           
     }
 
-    public IDownloadMethod ResolveDownloadMethod(string fileUrl) => _serviceProvider.GetServices<IDownloadMethod>().FirstOrDefault(x => x.CanHandle(fileUrl));
+    public IDownloadMethod ResolveDownloadMethod(string? fileUrl) => _serviceProvider.GetServices<IDownloadMethod>().FirstOrDefault(x => x.CanHandle(fileUrl));
 
     /// <inheritdoc />
     /// <summary>

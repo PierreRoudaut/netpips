@@ -4,7 +4,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Netpips.API.Download.Model;
 using Netpips.API.Identity.Authorization;
 using Netpips.API.Identity.Model;
+using Netpips.API.Media.Model;
 using Netpips.API.Subscriptions.Model;
+using Newtonsoft.Json;
 
 namespace Netpips.API.Core.Model;
 
@@ -28,28 +30,32 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-         // unique email constraint
+         // unique email constraiant
          modelBuilder.Entity<User>().HasIndex(e => e.Email).IsUnique();
 
         //  // unique userId/showRssId constraint
-        //  modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
+        modelBuilder.Entity<TvShowSubscription>().HasIndex(e => new {e.UserId, e.ShowRssId}).IsUnique();
         //
         //
         // // backing fields
-        //  modelBuilder.Entity<DownloadItem>().Property(e => e.MovedFiles).HasColumnName("MovedFiles");
+        modelBuilder
+            .Entity<DownloadItem>()
+            .Property(e => e.MovedFiles)
+            .HasConversion(v => JsonConvert.SerializeObject(v), 
+                v => !string.IsNullOrEmpty(v) ? JsonConvert.DeserializeObject<List<MediaItem>>(v): new List<MediaItem>());
         //
-        // // string to enum conversions
-        //  modelBuilder
-        //      .Entity<User>().Property(e => e.Role)
-        //      .HasConversion(new EnumToStringConverter<Role>())
-        //      .HasDefaultValue(Role.User);
-        //  modelBuilder
-        //      .Entity<DownloadItem>().Property(e => e.State)
-        //      .HasConversion(new EnumToStringConverter<DownloadState>());
-        //  modelBuilder
-        //      .Entity<DownloadItem>().Property(e => e.Type)
-        //      .HasConversion(new EnumToStringConverter<DownloadType>());
-        //
+        // string to enum conversions
+         modelBuilder
+             .Entity<User>().Property(e => e.Role)
+             .HasConversion(new EnumToStringConverter<Role>())
+             .HasDefaultValue(Role.User);
+         modelBuilder
+             .Entity<DownloadItem>().Property(e => e.State)
+             .HasConversion(new EnumToStringConverter<DownloadState>());
+         modelBuilder
+             .Entity<DownloadItem>().Property(e => e.Type)
+             .HasConversion(new EnumToStringConverter<DownloadType>());
+        
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

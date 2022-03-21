@@ -171,7 +171,7 @@ public class P2PDownloadMethod : IDownloadMethod
         new Regex(@"magnet:?.*")
     };
 
-    private bool PointsToTorrentUrl(string url)
+    private bool PointsToTorrentUrl(string? url)
     {
         var request = new HttpRequestMessage(HttpMethod.Head, url);
         using (var client = new HttpClient())
@@ -195,7 +195,7 @@ public class P2PDownloadMethod : IDownloadMethod
     /// </summary>
     /// <param name="fileUrl"></param>
     /// <returns></returns>
-    public bool CanHandle(string fileUrl)
+    public bool CanHandle(string? fileUrl)
     {
         var res = SupportedUrls.Any(x => x.IsMatch(fileUrl));
         if (res)

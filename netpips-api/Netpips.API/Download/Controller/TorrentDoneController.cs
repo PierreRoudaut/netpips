@@ -38,7 +38,7 @@ public class TorrentDoneController : Microsoft.AspNetCore.Mvc.Controller
     [ProducesResponseType(typeof(DownloadItemActionError), 404)]
     [ProducesResponseType(typeof(DownloadItemActionError), 400)]
     [ProducesResponseType(200)]
-    public ObjectResult TorrentDone([FromServices] IControllerHelperService helper, string hash)
+    public ObjectResult TorrentDone([FromServices] IControllerHelperService helper, string? hash)
     {
         _logger.LogInformation("TorrentDone: " + hash);
         if (!helper.IsLocalCall(HttpContext))

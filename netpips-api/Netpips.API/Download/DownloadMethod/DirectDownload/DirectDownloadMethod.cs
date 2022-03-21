@@ -11,7 +11,7 @@ namespace Netpips.API.Download.DownloadMethod.DirectDownload;
 
 public class DirectDownloadMethod : IDownloadMethod
 {
-    public static readonly ConcurrentDictionary<string, IDirectDownloadTask> DirectDownloadTasks = new();
+    public static readonly ConcurrentDictionary<string?, IDirectDownloadTask> DirectDownloadTasks = new();
 
     private readonly ILogger<DirectDownloadMethod> _logger;
     private readonly NetpipsSettings _settings;
@@ -152,7 +152,7 @@ public class DirectDownloadMethod : IDownloadMethod
     }
 
     public bool Archive(DownloadItem item) => true;
-    public bool CanHandle(string fileUrl)
+    public bool CanHandle(string? fileUrl)
     {
         return _directDownloadSettings.Filehosters.Any(x => x.CanHandle(fileUrl));
     }

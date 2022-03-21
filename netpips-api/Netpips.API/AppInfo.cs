@@ -2,8 +2,8 @@
 
 namespace Netpips.API;
 
-public class AppInfo
+public record AppInfo
 {
-    public EnvType Env { get; set; }
-    public string? Version { get; set; }
+    public EnvType Env { get; init; }
+    public string? Version { get; init; }
 }
