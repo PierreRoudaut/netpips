@@ -9,7 +9,7 @@ public static class AppAsserter
         var commandList = new Dictionary<string, string>
         {
             { "filebot", "-version" },
-            // { "transmission-remote", "--version" },
+            { "transmission-remote", "--version" },
             { "mediainfo", "--version" },
              { "aria2c", "--version" }
         };
@@ -37,7 +37,7 @@ public static class AppAsserter
                 if (!FilesystemHelper.IsDirectoryWritable(path))
                     throw new ApplicationException($@"{path} is not writable");
             });
-        if (!File.Exists(settings.TorrentDoneScript))
-            throw new ApplicationException("Torrent done script: " + settings.TorrentDoneScript + " does not exists");
+        // if (!File.Exists(settings.TorrentDoneScript))
+        //     throw new ApplicationException("Torrent done script: " + settings.TorrentDoneScript + " does not exists");
     }
 }
